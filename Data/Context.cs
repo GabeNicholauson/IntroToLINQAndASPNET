@@ -4,7 +4,7 @@ namespace IntroToLINQAndASPNET.Data
 {
     public static class Context
     {
-        public static List<Movie> movies = new List<Movie>()
+        public static List<Movie> Movies = new List<Movie>()
         {
             new Movie("Jurassic Park", "Action", 1993, 63_000_000),
             new Movie("Dumb and Dumber", "Comedy", 1994, 17_000_000),
