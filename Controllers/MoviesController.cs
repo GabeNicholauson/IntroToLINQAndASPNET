@@ -27,9 +27,13 @@ namespace IntroToLINQAndASPNET.Controllers
 
         }
 
-        public void MoviesInBudget()
+        public IActionResult MoviesInBudget(int budget)
         {
-
+            List<Movie> allMovies = Context.Movies.Where(x =>
+            {
+                return x.Budget <= budget;
+            }).ToList();
+            return View("Index", allMovies);
         }
 
         public void MoviesInThe90s()
