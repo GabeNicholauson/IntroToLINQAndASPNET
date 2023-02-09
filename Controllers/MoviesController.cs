@@ -58,10 +58,5 @@ namespace IntroToLINQAndASPNET.Controllers
         {
 
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }
