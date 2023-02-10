@@ -6,6 +6,11 @@ namespace IntroToLINQAndASPNET.Controllers
 {
     public class MoviesController : Controller
     {
+        public IActionResult Index()
+        {
+            return View(Context.Movies);
+        }
+
         public IActionResult GetMovieInfo(string name) // retrieves info about the movie
         {
             List<Movie> allMovies = new List<Movie>();

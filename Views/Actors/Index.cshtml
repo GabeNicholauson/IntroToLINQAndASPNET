@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Actor>
+
+<h1>All Actors</h1>
+
+@{
+    foreach (Actor actor in Model)
+    {
+        <h1>----------------------------------</h1>
+        <h2>@actor.Name</h2>
+        <h1>----------------------------------</h1>
+    }
+}
