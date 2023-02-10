@@ -14,6 +14,8 @@
         private int _budget;
         public int Budget { get { return _budget; } }
 
+        public List<Rating> AllRatings = new List<Rating>();
+
         public Movie(string name, string gnere, int year, int budget)
         {
             _name = name;

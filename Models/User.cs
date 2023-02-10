@@ -8,7 +8,7 @@
         private int _id;
         public int Id { get { return _id; } }
 
-        public List<Rating> _allRatings = new List<Rating>();
+        public List<Rating> AllRatings = new List<Rating>();
 
         public User(string name, int id)
         {
