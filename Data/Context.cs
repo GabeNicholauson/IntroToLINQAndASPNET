@@ -61,19 +61,21 @@ namespace IntroToLINQAndASPNET.Data
 
         static Context()
         {
-            foreach (User user in Users)
+            foreach (User user in Users) // goes through each actor in the list
             {
+                // adds the ratings with matching user names to their ratings list
                 user.AllRatings = Ratings.Where(x =>
                 {
                     return x.User.Name == user.Name;
                 }).ToList();
             }
 
-            foreach (Movie movie in Movies)
+            foreach (Movie movie in Movies) // goes through each movie in the list
             {
+                // gives them their ratings from AllRatings
                 movie.AllRatings = Ratings.Where(x =>
                 {
-                    return x.Movie.Name == movie.Name;
+                    return x.Movie.Name == movie.Name; // if the names match
                 }).ToList();
             }
         }
