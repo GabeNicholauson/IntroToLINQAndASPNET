@@ -8,7 +8,7 @@
         private int _salary;
         public int Salary { get { return _salary; } }
 
-        public List<Movie> AllRoles = new List<Movie>();
+        public Dictionary<Movie, string> AllRoles = new Dictionary<Movie, string>();
 
         public Actor(string name, int salary)
         {

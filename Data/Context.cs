@@ -62,6 +62,7 @@ namespace IntroToLINQAndASPNET.Data
                     return x.Movie.Name == movie.Name; // if the names match
                 }).ToList();
             }
+
         }
     }
 }

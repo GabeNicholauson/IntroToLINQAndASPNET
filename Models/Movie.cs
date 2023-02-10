@@ -16,7 +16,7 @@
 
         public List<Rating> AllRatings = new List<Rating>();
 
-        public List<Actor> AllActors = new List<Actor>();
+        public Dictionary<Actor, string> AllActors = new Dictionary<Actor, string>();
 
         public Movie(string name, string gnere, int year, int budget)
         {
