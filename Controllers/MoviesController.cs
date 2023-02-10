@@ -32,7 +32,7 @@ namespace IntroToLINQAndASPNET.Controllers
                     count++;
                 }
             }
-            genreCount = $"{genre}: {count}";
+            genreCount = $"Movies in {genre}: {count}";
             return View("Count", genreCount);
         }
 
@@ -54,9 +54,31 @@ namespace IntroToLINQAndASPNET.Controllers
             return View("Details", allMovies);
         }
 
-        public void CalculateOverallRating()
+        public IActionResult CalculateOverallRating(string movie)
         {
-
+            Movie foundMovie = Context.Movies.First(x => x.Name.ToLower() == movie.ToLower().Trim());
+            double average = 0;
+            string overallRating;
+            try
+            {
+                if (foundMovie.AllRatings.Count == 0)
+                {
+                    throw new Exception($"{foundMovie.Name} has no ratings.");
+                }
+                else
+                {
+                    foreach (Rating rating in foundMovie.AllRatings)
+                    {
+                        average += rating.Score;
+                    }
+                    average /= foundMovie.AllRatings.Count;
+                }
+                overallRating = $"The overall rating for {foundMovie.Name}: {average}";
+                return View("Count", overallRating);
+            } catch (Exception ex)
+            {
+                return View("Count", ex.Message);
+            }
         }
     }
 }
