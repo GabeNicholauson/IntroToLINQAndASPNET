@@ -27,7 +27,7 @@ namespace IntroToLINQAndASPNET.Data
         private static Actor _kelly = new Actor("Kelly", 900_000);
         private static Actor _quart = new Actor("Quart", 900_001);
 
-        public static List<Movie> Movies = new List<Movie>()
+        private static List<Movie> _movies = new List<Movie>()
         {
             _jurrasicPark,
             _dumbAndDumber,
@@ -35,15 +35,17 @@ namespace IntroToLINQAndASPNET.Data
             _avatar,
             _2001ASpaceOdyssey
         };
+        public static List<Movie> Movies { get { return _movies; } }
 
-        public static List<User> Users = new List<User>()
+        private static List<User> _users = new List<User>()
         {
             _joe,
             _mary,
             _harold
         };
+        public static List<User> Users { get { return _users; } }
 
-        public static List<Rating> Ratings = new List<Rating>()
+        private static List<Rating> _ratings = new List<Rating>()
         {
             _rating1,
             _rating2,
@@ -51,13 +53,15 @@ namespace IntroToLINQAndASPNET.Data
             _rating4,
             _rating5
         };
+        public static List<Rating> Ratings { get { return _ratings; } }
 
-        public static List<Actor> Actors = new List<Actor>()
+        private static List<Actor> _actors = new List<Actor>()
         {
             _billy,
             _kelly,
             _quart
         };
+        public static List<Actor> Actors { get { return _actors; } }
 
         static Context()
         {
