@@ -16,6 +16,8 @@
 
         public List<Rating> AllRatings = new List<Rating>();
 
+        public List<Actor> AllActors = new List<Actor>();
+
         public Movie(string name, string gnere, int year, int budget)
         {
             _name = name;

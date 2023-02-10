@@ -8,6 +8,8 @@
         private int _salary;
         public int Salary { get { return _salary; } }
 
+        public List<Movie> AllRoles = new List<Movie>();
+
         public Actor(string name, int salary)
         {
             _name = name;
