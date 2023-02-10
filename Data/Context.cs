@@ -23,6 +23,10 @@ namespace IntroToLINQAndASPNET.Data
         private static Rating _rating4 = new Rating(_harold, _jurrasicPark, 50);
         private static Rating _rating5 = new Rating(_joe, _2001ASpaceOdyssey, 40);
 
+        private static Actor _billy = new Actor("Billy", 100_000);
+        private static Actor _kelly = new Actor("Kelly", 900_000);
+        private static Actor _quart = new Actor("Quart", 900_001);
+
         public static List<Movie> Movies = new List<Movie>()
         {
             _jurrasicPark,
@@ -46,6 +50,13 @@ namespace IntroToLINQAndASPNET.Data
             _rating3,
             _rating4,
             _rating5
+        };
+
+        public static List<Actor> Actors = new List<Actor>()
+        {
+            _billy,
+            _kelly,
+            _quart
         };
 
         static Context()
