@@ -10,5 +10,17 @@
         <li>@kvp.Key.Name as @kvp.Value</li>
     }
 </ul>
+<h4>Ratings:</h4>
+<ul>
+    @foreach (Rating rating in Model.AllRatings)
+    {
+            <li>@rating.User.Name gave this movie a @rating.Score <br />
+            @if(rating.Comment != null)
+            {
+                <span>@rating.Comment</span>
+            }
+            </li>
+    }
+</ul>
 <h1>----------------------------------</h1>
 
