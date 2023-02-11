@@ -27,11 +27,11 @@ namespace IntroToLINQAndASPNET.Data
 
         private static List<Rating> _ratings = new List<Rating>()
         {
-            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "Avatar"), 8.4),
-            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "Dumb and Dumber"), 99.9),
-            new Rating(_users.First(u => u.Name == "Mary"), _movies.First(m => m.Name == "Avatar"), 33.2),
-            new Rating(_users.First(u => u.Name == "Harold"), _movies.First(m => m.Name == "Jurassic Park"), 50),
-            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "2001: A Space Odyssey"), 40)
+            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "Avatar"), 8),
+            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "Dumb and Dumber"), 9),
+            new Rating(_users.First(u => u.Name == "Mary"), _movies.First(m => m.Name == "Avatar"), 3),
+            new Rating(_users.First(u => u.Name == "Harold"), _movies.First(m => m.Name == "Jurassic Park"), 5),
+            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "2001: A Space Odyssey"), 4)
         };
         public static List<Rating> Ratings { get { return _ratings; } }
 
