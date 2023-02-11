@@ -7,6 +7,13 @@
     <h4>Genre: @movie.Genre</h4>
     <h4>Year of release: @movie.ReleaseYear</h4>
     <h4>Budget: $@movie.Budget</h4>
+    <h4>Actors:</h4>
+    <ul>
+        @foreach(var kvp in movie.AllActors)
+        {
+            <li>@kvp.Key.Name as @kvp.Value</li>
+        }
+    </ul>
     <h1>----------------------------------</h1>
 }
 

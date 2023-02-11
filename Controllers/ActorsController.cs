@@ -17,7 +17,13 @@ namespace IntroToLINQAndASPNET.Controllers
             int index = Context.Actors.Count - 1;
             // order the list by salary and get me the actor in the last position
             Actor highestPaid = Context.Actors.OrderBy(actor => actor.Salary).ElementAt(index);
-            return View("Details", highestPaid);
+            return View(highestPaid);
+        }
+
+        public IActionResult GetActorInfo(string name) // retrieves info about the movie
+        {
+            Actor actor = Context.Actors.FirstOrDefault(x => x.Name.ToLower() == name.ToLower().Trim());
+            return View("Details", actor);
         }
     }
 }

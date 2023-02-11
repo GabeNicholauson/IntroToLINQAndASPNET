@@ -1,3 +1,14 @@
 ﻿@model Actor
 
-<h1>The highest paid actor is @Model.Name with a salary of $@Model.Salary</h1>
+<h1>----------------------------------</h1>
+<h2>@Model.Name</h2>
+<h4>Salary: @Model.Salary</h4>
+<h4>Rolls:</h4>
+<ul>
+    @foreach(var kvp in Model.AllRoles)
+    {
+        <li>@kvp.Key.Name as @kvp.Value</li>
+    }
+</ul>
+<h1>----------------------------------</h1>
+

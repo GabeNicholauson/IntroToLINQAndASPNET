@@ -43,7 +43,15 @@ namespace IntroToLINQAndASPNET.Data
         };
         public static List<Actor> Actors { get { return _actors; } }
 
-        static Context()
+        private static void AddRoll(string name, string role, string movieTitle)
+        {
+            Actor actor = _actors.First(a => a.Name == name);
+            Movie movie = _movies.First(m => m.Name == movieTitle);
+            actor.AllRoles.Add(movie, role);
+            movie.AllActors.Add(actor, role);
+        }
+
+        private static void AddUserRatings()
         {
             foreach (User user in Users) // goes through each actor in the list
             {
@@ -53,7 +61,9 @@ namespace IntroToLINQAndASPNET.Data
                     return x.User.Name == user.Name;
                 }).ToList();
             }
-
+        }
+        private static void AddMovieRatings()
+        {
             foreach (Movie movie in Movies) // goes through each movie in the list
             {
                 // gives them their ratings from AllRatings
@@ -62,7 +72,24 @@ namespace IntroToLINQAndASPNET.Data
                     return x.Movie.Name == movie.Name; // if the names match
                 }).ToList();
             }
+        }
 
+        static Context()
+        {
+            AddUserRatings();
+            AddMovieRatings();
+
+            AddRoll("Billy", "Captain Jurassic", "Jurassic Park");
+            AddRoll("Kelly", "Anti-Jurassic", "Jurassic Park");
+
+            AddRoll("Kelly", "Dumber", "Dumb and Dumber");
+
+            AddRoll("Quart", "The 3rd Avatar", "Avatar");
+            AddRoll("Billy", "The McDonald's Avatar", "Avatar");
+
+            AddRoll("Billy", "Karen", "The SpongeBob SquarePants Movie");
+
+            AddRoll("Kelly", "HAL 9000", "2001: A Space Odyssey");
         }
     }
 }
