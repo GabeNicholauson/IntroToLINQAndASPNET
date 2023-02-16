@@ -96,5 +96,12 @@ namespace IntroToLINQAndASPNET.Controllers
         {
             return View("Create");
         }
+
+        [HttpPost]
+        public IActionResult CreateRating(Rating rating)
+        {
+            Context.CreateRating(rating.User.Name, rating.Movie.Name, rating.Score, rating.Comment);
+            return RedirectToAction("GetMovieInfo", new {name = "Avatar"});
+        }
     }
 }

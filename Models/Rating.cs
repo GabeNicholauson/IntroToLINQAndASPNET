@@ -9,12 +9,30 @@
         public Movie Movie { get { return _movie; } }   
 
         private int _score;
-        public int Score { get { return _score; } }    
+        public int Score { get { return _score; } }
+
+        private string _comment;
+        public string Comment { get { return _comment; } }
+        public void SetComment(string comment)
+        {
+            if(comment == null || comment.Trim().Length == 0)
+            {
+                return;
+            } else
+            {
+                _comment = comment;
+            }
+        }
         public Rating(User user, Movie movie, int score) 
         {
             _user = user;
             _movie = movie;
             _score = score;
         } 
+
+        public Rating()
+        {
+
+        }
     }
 }

@@ -86,6 +86,15 @@ namespace IntroToLINQAndASPNET.Data
             movie.AllActors.Add(actor, role);
         }
 
+        public static void CreateRating(string user, string movie, int score, string comment)
+        {
+            Rating newRating = new Rating(GetUser(user), GetMovie(movie), score);
+            newRating.SetComment(comment);
+            _ratings.Add(newRating);
+            GetUser(user).AllRatings.Add(newRating);
+            GetMovie(movie).AllRatings.Add(newRating);
+        }
+
         static Context()
         {
             AddMovieRatings();

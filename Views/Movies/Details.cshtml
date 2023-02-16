@@ -8,27 +8,37 @@
     <h4>Year of release: @movie.ReleaseYear</h4>
     <h4>Budget: $@movie.Budget</h4>
     <h4>Actors:</h4>
-    @if(movie.AllActors.Count > 0)
-    {
-        foreach (var kvp in movie.AllActors)
+    <ul>
+        @if(movie.AllActors.Count > 0)
         {
-            <h5>@kvp.Key.Name as @kvp.Value</h5>
+            foreach (var kvp in movie.AllActors)
+            {
+                <li>@kvp.Key.Name as @kvp.Value</li>
+            }
+        } else
+        {
+            <li>This movie has no Actors</li>
         }
-    } else
-    {
-        <h5>This movie has no Actors</h5>
-    }
+    </ul>
     <h4>Ratings:</h4>
-    @if(movie.AllRatings.Count > 0)
-    {
-        foreach (Rating rating in movie.AllRatings)
+    <ul>
+        @if(movie.AllRatings.Count > 0)
+            {
+            foreach (Rating rating in movie.AllRatings)
+            {
+                <li>@rating.User.Name: @rating.Score <br>
+                    @if(rating.Comment != null)
+                    {
+                        <span>@rating.Comment</span>
+                    }
+                </li>
+            }
+        } else
         {
-            <h5>@rating.User.Name: @rating.Score</h5>
+            <li>This movie has no ratings</li>
         }
-    } else
-    {
-        <h5>This movie has no ratings</h5>
-    }
+    </ul>
+    <a asp-action="CreateRating" method="get">Rate</a>
     <h1>----------------------------------</h1>
 }
 
