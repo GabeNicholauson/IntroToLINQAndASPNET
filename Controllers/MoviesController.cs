@@ -90,5 +90,11 @@ namespace IntroToLINQAndASPNET.Controllers
                 return View("Count", ex.Message);
             }
         }
+
+        [HttpGet]
+        public IActionResult CreateRating()
+        {
+            return View("Create");
+        }
     }
 }
