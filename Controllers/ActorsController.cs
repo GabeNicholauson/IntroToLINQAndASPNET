@@ -6,6 +6,10 @@ namespace IntroToLINQAndASPNET.Controllers
 {
     public class ActorsController : Controller
     {
+        public IActionResult Index()
+        {
+            return View(Context.Actors);
+        }
         public IActionResult HighestPaidActor()
         {
             // the list gets sorted least to greatest so i want the actor in the last position
