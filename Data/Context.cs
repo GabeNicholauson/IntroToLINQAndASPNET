@@ -27,11 +27,11 @@ namespace IntroToLINQAndASPNET.Data
 
         private static List<Rating> _ratings = new List<Rating>()
         {
-            new Rating(GetUser("Joe"), GetMovie("Avatar"), 8.4),
-            new Rating(GetUser("Joe"), GetMovie("Dumb and Dumber"), 99.9),
-            new Rating(GetUser("Mary"), GetMovie("Avatar"), 33.2),
-            new Rating(GetUser("Harold"), GetMovie("Jurassic Park"), 50),
-            new Rating(GetUser("Joe"), GetMovie("2001: A Space Odyssey"), 40)
+            new Rating(GetUser("Joe"), GetMovie("Avatar"), 9),
+            new Rating(GetUser("Joe"), GetMovie("Dumb and Dumber"), 7),
+            new Rating(GetUser("Mary"), GetMovie("Avatar"), 8),
+            new Rating(GetUser("Harold"), GetMovie("Jurassic Park"), 4),
+            new Rating(GetUser("Joe"), GetMovie("2001: A Space Odyssey"), 2)
         };
         public static List<Rating> Ratings { get { return _ratings; } }
 
@@ -54,7 +54,19 @@ namespace IntroToLINQAndASPNET.Data
             throw new Exception("That movie doesn't exist");
         }
 
-        static Context()
+        private static void AddMovieRatings()
+        {
+            foreach (Movie movie in Movies) // goes through each movie in the list
+            {
+                // gives them their ratings from AllRatings
+                movie.AllRatings = Ratings.Where(x =>
+                {
+                    return x.Movie.Name == movie.Name; // if the names match
+                }).ToList();
+            }
+        }
+
+        private static void AddUserRatings()
         {
             foreach (User user in Users) // goes through each actor in the list
             {
@@ -64,15 +76,32 @@ namespace IntroToLINQAndASPNET.Data
                     return x.User.Name == user.Name;
                 }).ToList();
             }
+        }
 
-            foreach (Movie movie in Movies) // goes through each movie in the list
-            {
-                // gives them their ratings from AllRatings
-                movie.AllRatings = Ratings.Where(x =>
-                {
-                    return x.Movie.Name == movie.Name; // if the names match
-                }).ToList();
-            }
+        private static void AddRoll(string name, string role, string movieTitle)
+        {
+            Actor actor = _actors.First(a => a.Name == name);
+            Movie movie = _movies.First(m => m.Name == movieTitle);
+            actor.AllRoles.Add(movie, role);
+            movie.AllActors.Add(actor, role);
+        }
+
+        static Context()
+        {
+            AddMovieRatings();
+            AddUserRatings();
+
+            AddRoll("Billy", "Captain Jurassic", "Jurassic Park");
+            AddRoll("Kelly", "Anti-Jurassic", "Jurassic Park");
+
+            AddRoll("Kelly", "Dumber", "Dumb and Dumber");
+
+            AddRoll("Quart", "The 3rd Avatar", "Avatar");
+            AddRoll("Billy", "The McDonald's Avatar", "Avatar");
+
+            AddRoll("Billy", "Karen", "The SpongeBob SquarePants Movie");
+
+            AddRoll("Kelly", "HAL 9000", "2001: A Space Odyssey");
         }
     }
 }

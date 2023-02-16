@@ -15,6 +15,9 @@
         public int Budget { get { return _budget; } }
 
         public List<Rating> AllRatings = new List<Rating>();
+        
+        private Dictionary<Actor, string> _allActors = new Dictionary<Actor, string>();
+        public Dictionary<Actor, string> AllActors { get { return _allActors; } }
 
         public Movie(string name, string gnere, int year, int budget)
         {

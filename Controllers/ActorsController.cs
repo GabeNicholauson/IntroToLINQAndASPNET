@@ -10,13 +10,18 @@ namespace IntroToLINQAndASPNET.Controllers
         {
             return View(Context.Actors);
         }
+
+        public IActionResult GetActorInfo(string name) // retrieves info about the movie
+        {
+            return View("Details", Context.Actors.FirstOrDefault(x => x.Name.ToLower() == name.ToLower().Trim()));
+        }
         public IActionResult HighestPaidActor()
         {
             // the list gets sorted least to greatest so i want the actor in the last position
             int index = Context.Actors.Count - 1;
             // order the list by salary and get me the actor in the last position
             Actor highestPaid = Context.Actors.OrderBy(actor => actor.Salary).ElementAt(index);
-            return View("Details", highestPaid);
+            return View(highestPaid);
         }
     }
 }
