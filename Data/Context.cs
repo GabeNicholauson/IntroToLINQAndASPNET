@@ -27,11 +27,11 @@ namespace IntroToLINQAndASPNET.Data
 
         private static List<Rating> _ratings = new List<Rating>()
         {
-            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "Avatar"), 8.4),
-            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "Dumb and Dumber"), 99.9),
-            new Rating(_users.First(u => u.Name == "Mary"), _movies.First(m => m.Name == "Avatar"), 33.2),
-            new Rating(_users.First(u => u.Name == "Harold"), _movies.First(m => m.Name == "Jurassic Park"), 50),
-            new Rating(_users.First(u => u.Name == "Joe"), _movies.First(m => m.Name == "2001: A Space Odyssey"), 40)
+            new Rating(GetUser("Joe"), GetMovie("Avatar"), 8.4),
+            new Rating(GetUser("Joe"), GetMovie("Dumb and Dumber"), 99.9),
+            new Rating(GetUser("Mary"), GetMovie("Avatar"), 33.2),
+            new Rating(GetUser("Harold"), GetMovie("Jurassic Park"), 50),
+            new Rating(GetUser("Joe"), GetMovie("2001: A Space Odyssey"), 40)
         };
         public static List<Rating> Ratings { get { return _ratings; } }
 
@@ -42,6 +42,17 @@ namespace IntroToLINQAndASPNET.Data
             new Actor("Quart", 900_001)
         };
         public static List<Actor> Actors { get { return _actors; } }
+
+        private static User GetUser(string name)
+        {
+            return Users.First(x => x.Name == name);
+            throw new Exception("That user doesn't exist");
+        }
+        private static Movie GetMovie(string name)
+        {
+            return Movies.First(x => x.Name == name);
+            throw new Exception("That movie doesn't exist");
+        }
 
         static Context()
         {
