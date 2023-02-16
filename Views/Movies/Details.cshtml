@@ -7,6 +7,17 @@
     <h4>Genre: @movie.Genre</h4>
     <h4>Year of release: @movie.ReleaseYear</h4>
     <h4>Budget: $@movie.Budget</h4>
+    <h4>Ratings:</h4>
+    @if(movie.AllRatings.Count > 0)
+    {
+        foreach (Rating rating in movie.AllRatings)
+        {
+            <h5>@rating.User.Name: @rating.Score</h5>
+        }
+    } else
+    {
+        <h5>This movie has no ratings</h5>
+    }
     <h1>----------------------------------</h1>
 }
 
